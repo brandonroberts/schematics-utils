@@ -6,7 +6,18 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "MIT"
+  "keywords": [
+    "schematics"
+  ],
+  "author": "Brandon Roberts",
+  "license": "MIT",
+  "devDependencies": {
+    "@angular-devkit/core": "^7.3.2",
+    "@angular-devkit/schematics": "^7.3.2",
+    "@schematics/angular": "^7.3.2",
+    "@types/jasmine": "^3.0.0",
+    "@types/node": "^8.0.31",
+    "jasmine": "^3.0.0",
+    "typescript": "~3.2.2"
+  }
 }

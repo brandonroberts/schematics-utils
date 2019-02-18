@@ -1,0 +1,13 @@
+{
+  "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "add": {
+      "description": "Add support for ng-add.",
+      "factory": "./add/index#addNgAdd"
+    },
+    "migration": {
+      "description": "Add a migration schematic.",
+      "factory": "./migration/index#addMigration"      
+    }
+  }
+}
