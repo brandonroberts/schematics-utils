@@ -4,7 +4,11 @@
   "description": "A collection of utility functions for generating Angular CLI schematics",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc -p tsconfig.json",
+    "copy:schemas": "cp -P src/*/schema.json dist/",
+    "copy:files": "cp -P -R src/*/files/** dist/",
+    "copy:collection": "cp -P src/collection.json dist/src/collection.json",
+    "postbuild": "yarn copy:schemas && yarn copy:files && yarn copy:collection"
   },
   "keywords": [
     "schematics"
@@ -14,6 +18,8 @@
   "devDependencies": {
     "@angular-devkit/core": "^7.3.2",
     "@angular-devkit/schematics": "^7.3.2",
+    "@bazel/bazel": "^0.22.0",
+    "@bazel/typescript": "^0.25.0",
     "@schematics/angular": "^7.3.2",
     "@types/jasmine": "^3.0.0",
     "@types/node": "^8.0.31",

@@ -1,1 +1,4 @@
 node_modules
+bazel-*
+dist
+.DS_Store

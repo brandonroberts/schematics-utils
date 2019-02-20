@@ -7,10 +7,9 @@ import {
 import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
 import { Schema as Options } from './schema';
 
-  function ngAdd(options: Options, , context: SchematicContext): Rule {
-    return (host: Tree) => {
-        context.addTask(new NodePackageInstallTask());
-        return host;
-    };
-  }
+export function ngAdd(options: Options, context: SchematicContext): Rule {
+  return (host: Tree) => {
+      context.addTask(new NodePackageInstallTask());
+      return host;
+  };
 }

@@ -1,5 +1,5 @@
 import {strings} from '@angular-devkit/core';
-import {Rule, SchematicContext, Tree, apply, chain, mergeWith, move, url, branchAndMerge, template, SchematicsException} from '@angular-devkit/schematics';
+import {Rule, SchematicContext, Tree, apply, chain, mergeWith, move, url, branchAndMerge, applyTemplates, SchematicsException} from '@angular-devkit/schematics';
 import {parseName} from '@schematics/angular/utility/parse-name';
 import {buildDefaultPath, getProject} from '@schematics/angular/utility/project';
 import {Schema as Options} from './schema';
@@ -19,9 +19,10 @@ export function addNgAdd(options: Options): Rule {
     options.path = parsedPath.path;
 
     const templateSource = apply(url('./files'), [
-      template({
+      applyTemplates({
         ...strings,
         ...(options as object),
+        schematicsPath: options.schematicsPath || ''
       } as any),
       move(parsedPath.path),
     ]);

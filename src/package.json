@@ -8,5 +8,5 @@
   ],
   "author": "Brandon Roberts",
   "license": "MIT",
-  "schematics": "./src/collection.json"
+  "schematics": "./collection.json"
 }
