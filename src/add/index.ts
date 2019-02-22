@@ -22,7 +22,6 @@ export function addNgAdd(options: Options): Rule {
       applyTemplates({
         ...strings,
         ...(options as object),
-        schematicsPath: options.schematicsPath || ''
       } as any),
       move(parsedPath.path),
     ]);

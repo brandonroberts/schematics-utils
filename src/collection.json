@@ -3,7 +3,8 @@
   "schematics": {
     "add": {
       "description": "Add support for ng-add.",
-      "factory": "./add/index#addNgAdd"
+      "factory": "./add/index#addNgAdd",
+      "schema": "./add/schema.json"
     },
     "migration": {
       "description": "Add a migration schematic.",
