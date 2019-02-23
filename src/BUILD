@@ -6,15 +6,23 @@ load("@build_bazel_rules_nodejs//:defs.bzl", "npm_package")
 
 ts_library(
     name = "src",
-    srcs = glob([
-        "**/*.ts",
-    ], exclude = [
-        "**/*_spec.ts"
-    ]),
+    srcs = glob(
+        [
+            "**/*.ts",
+        ],
+        exclude = [
+            "**/*_spec.ts",
+            "**/files/**/*",
+        ],
+    ),
+    tsconfig = ":tsconfig-build.json",
     deps = [
-        "@npm//@types/node",
+        "@npm//@types/jasmine",
+        "@npm//@types/node",        
         "@npm//@angular-devkit/core",
+        "@npm//@angular-devkit/schematics",
         "@npm//@schematics/angular",
+        "@npm//typescript",
     ],
 )
 
