@@ -16,6 +16,7 @@ ts_library(
         ],
     ),
     tsconfig = ":tsconfig-build.json",
+    module_name = "schematics-utils",
     deps = [
         "@npm//@types/jasmine",
         "@npm//@types/node",        
