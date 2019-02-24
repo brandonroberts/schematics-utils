@@ -1,7 +1,15 @@
-import { SchematicTestRunner, UnitTestTree } from '@angular-devkit/schematics/testing';
+import { Tree } from '@angular-devkit/schematics';
+import { SchematicTestRunner } from '@angular-devkit/schematics/testing';
 import * as path from 'path';
-import { Schema as Options } from './schema';
 
-describe('ng-add', () => {
-  
+
+const collectionPath = path.join(__dirname, '../collection.json');
+
+describe('ng-add schematic', () => {
+  it('works', () => {
+    const runner = new SchematicTestRunner('<%= project %>', collectionPath);
+    const tree = runner.runSchematic('ng-add', {}, Tree.empty());
+
+    expect(tree.files).toEqual([]);
+  });
 });
