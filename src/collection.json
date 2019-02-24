@@ -6,10 +6,6 @@
       "factory": "./add/index#addNgAdd",
       "schema": "./add/schema.json"
     },
-    "migration": {
-      "description": "Add a migration schematic.",
-      "factory": "./migration/index#addMigration"      
-    },
     "collection": {
       "description": "Check/add the schematic collection.",
       "factory": "./collection/index",
