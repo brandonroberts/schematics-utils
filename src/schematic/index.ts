@@ -26,7 +26,8 @@ export function addSchematic(options: Options): Rule {
       schematic('collection', options),
       addSchematicToCollectionJson(normalize(`${libPath}/${options.schematicsPath}/collection.json`), strings.dasherize(options.name), {
         description: `${strings.capitalize(options.name)} schematic`,
-        factory: `./${strings.dasherize(options.name)}/index#${strings.camelize(options.name)}`
+        factory: `./${strings.dasherize(options.name)}/index#${strings.camelize(options.name)}`,
+        schema: `./${strings.dasherize(options.name)}/schema.json`
       }),
       mergeWith(templateSource),
     ]);

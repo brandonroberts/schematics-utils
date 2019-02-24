@@ -45,9 +45,9 @@ export default function collection(options: Schema): Rule {
             ...packageJson['scripts'],
             "build:schematics": "../../node_modules/.bin/tsc -p tsconfig.schematics.json",
             "copy:schemas": `cp --parents schematics/*/schema.json ../../dist/${options.project}/`,
-            "copy:files": `cp --parents -p schematics/*/files/** ../../dist/${options.project}/`,
+            "copy:files": `cp --parents **/*.template ../../dist/${options.project}/`,
             "copy:collection": `cp schematics/collection.json ../../dist/${options.project}/schematics/collection.json`,
-            "postbuild:schematics": "npm run copy:schemas && npm run copy:files && npm run copy:collection"
+            "postbuild:schematics": "npm run copy:schemas && npm run copy:collection && npm run copy:files"
           };
 
           tree.overwrite(`${libPath}/package.json`, JSON.stringify(packageJson, null, 2));          

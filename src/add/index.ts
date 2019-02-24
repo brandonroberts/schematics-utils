@@ -26,7 +26,8 @@ export function addNgAdd(options: Options): Rule {
       schematic('collection', options),
       addSchematicToCollectionJson(normalize(`${libPath}/${options.schematicsPath}/collection.json`), 'ng-add', {
         description: 'Add support for ng-add.',
-        factory: './ng-add/index#ngAdd'
+        factory: './ng-add/index#ngAdd',
+        schema: './ng-add/schema.json'
       }),
       mergeWith(templateSource),
     ]);
