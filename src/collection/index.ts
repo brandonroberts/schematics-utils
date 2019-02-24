@@ -11,7 +11,7 @@ import {
   applyTemplates,
   chain,
 } from '@angular-devkit/schematics';
-import { getProject, buildDefaultPath } from '@schematics/angular/utility/project';
+import { getProject, buildDefaultPath } from '../utility';
 import { Schema } from './schema';
 
 

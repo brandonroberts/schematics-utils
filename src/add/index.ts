@@ -1,8 +1,7 @@
 import {strings, normalize} from '@angular-devkit/core';
 import {Rule, Tree, apply, chain, mergeWith, move, url, applyTemplates, SchematicsException, schematic} from '@angular-devkit/schematics';
-import {buildDefaultPath, getProject} from '@schematics/angular/utility/project';
 import {Schema as Options} from './schema';
-import {addSchematicToCollectionJson} from '../utility/collection';
+import {addSchematicToCollectionJson, buildDefaultPath, getProject} from '../utility';
 
 export function addNgAdd(options: Options): Rule {
   return (tree: Tree) => {
@@ -32,8 +31,4 @@ export function addNgAdd(options: Options): Rule {
       mergeWith(templateSource),
     ]);
   };
-}
-
-export function addSchematicToCollection() {
-
 }
