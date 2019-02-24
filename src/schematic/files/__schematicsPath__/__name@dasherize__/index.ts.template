@@ -1,0 +1,8 @@
+import { Rule, Tree } from '@angular-devkit/schematics';
+import { Schema as Options } from './schema';
+
+export function <%= camelize(name) %>(options: Options): Rule {
+  return (host: Tree) => {
+      return host;
+  };
+}

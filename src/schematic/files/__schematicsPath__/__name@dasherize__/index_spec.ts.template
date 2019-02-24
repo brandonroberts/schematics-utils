@@ -2,6 +2,6 @@ import { SchematicTestRunner, UnitTestTree } from '@angular-devkit/schematics/te
 import * as path from 'path';
 import { Schema as Options } from './schema';
 
-describe('ng-add', () => {
+describe('<%= name %> Schematic', () => {
   
 });

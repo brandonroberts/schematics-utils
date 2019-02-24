@@ -1,10 +1,3 @@
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
 import { Path, normalize } from '@angular-devkit/core';
 import {
   Rule,
@@ -46,18 +39,28 @@ export default function collection(options: Schema): Rule {
           if (tree.exists(p)) {
             collectionPath = p;
           }
+        } else {
+          packageJson['schematics'] = `./${options.schematicsPath}/collection.json`;
+          packageJson['scripts'] = {
+            ...packageJson['scripts'],
+            "build:schematics": "../../node_modules/.bin/tsc -p tsconfig.schematics.json",
+            "copy:schemas": `cp --parents schematics/*/schema.json ../../dist/${options.project}/`,
+            "copy:files": `cp --parents -p schematics/*/files/** ../../dist/${options.project}/`,
+            "copy:collection": `cp schematics/collection.json ../../dist/${options.project}/schematics/collection.json`,
+            "postbuild:schematics": "npm run copy:schemas && npm run copy:files && npm run copy:collection"
+          };
+
+          tree.overwrite(`${libPath}/package.json`, JSON.stringify(packageJson, null, 2));          
         }
       }
     } catch (_) {}
 
     let source;
     if (!collectionPath) {
-      collectionPath = normalize(`${libPath}/collection.json`);
-      
       source = apply(url('./files'), [
-        applyTemplates({}),
+        applyTemplates({ ...(options as object)}),
         move(libPath),
-      ]);
+      ]);      
     }
 
     return source ? chain([mergeWith(source)]) : noop();

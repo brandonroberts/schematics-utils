@@ -14,6 +14,11 @@
       "description": "Check/add the schematic collection.",
       "factory": "./collection/index",
       "hidden": true      
+    },
+    "schematic": {
+      "description": "Add a new schematic to the collection.",
+      "factory": "./schematic/index#addSchematic",
+      "schema": "./schematic/schema.json"
     }
   }
 }

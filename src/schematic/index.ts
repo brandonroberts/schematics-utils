@@ -4,7 +4,7 @@ import {buildDefaultPath, getProject} from '@schematics/angular/utility/project'
 import {Schema as Options} from './schema';
 import {addSchematicToCollectionJson} from '../utility/collection';
 
-export function addNgAdd(options: Options): Rule {
+export function addSchematic(options: Options): Rule {
   return (tree: Tree) => {
     if (!options.project) {
       throw new SchematicsException('Option (project) is required.');
@@ -25,15 +25,11 @@ export function addNgAdd(options: Options): Rule {
 
     return chain([
       schematic('collection', options),
-      addSchematicToCollectionJson(normalize(`${libPath}/${options.schematicsPath}/collection.json`), 'ng-add', {
-        description: 'Add support for ng-add.',
-        factory: './ng-add/index#ngAdd'
+      addSchematicToCollectionJson(normalize(`${libPath}/${options.schematicsPath}/collection.json`), strings.dasherize(options.name), {
+        description: `${strings.capitalize(options.name)} schematic`,
+        factory: `./${strings.dasherize(options.name)}/index#${strings.camelize(options.name)}`
       }),
       mergeWith(templateSource),
     ]);
   };
-}
-
-export function addSchematicToCollection() {
-
 }
